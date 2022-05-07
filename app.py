@@ -14,7 +14,12 @@ Generate_pred=st.sidebar.button("Predict")
 #model=tf.keras.models.load_model('efficientnet_malaria_prediction.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 
 @st.cache()
-model=tf.keras.models.load_model('efficientnet_model.h5')
+
+def load_models(model_name):
+    model = tf.keras.models.load_model(model_name)
+    return model
+
+model=load_models('efficientnet_model.h5')
 
 def import_n_pred(image_data, model):
     size = (96,96)
