@@ -12,6 +12,8 @@ st.write("""
 upload_file = st.sidebar.file_uploader("Upload Cell Images", type="png")
 Generate_pred=st.sidebar.button("Predict")
 #model=tf.keras.models.load_model('efficientnet_malaria_prediction.h5',custom_objects={'KerasLayer':hub.KerasLayer})
+
+@st.cache()
 model=tf.keras.models.load_model('efficientnet_model.h5')
 
 def import_n_pred(image_data, model):
