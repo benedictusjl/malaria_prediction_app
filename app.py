@@ -1,5 +1,5 @@
 import streamlit as st
-import tensorflow_hub as hub
+#import tensorflow_hub as hub
 import tensorflow as tf
 import numpy as np
 from PIL import Image, ImageOps
