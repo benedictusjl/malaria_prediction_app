@@ -13,12 +13,14 @@ upload_file = st.sidebar.file_uploader("Upload Cell Images", type="png")
 Generate_pred=st.sidebar.button("Predict")
 #model=tf.keras.models.load_model('efficientnet_malaria_prediction.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 
-@st.cache(allow_output_mutation=True)
 
 if upload_file:
     image=Image.open(upload_file)
     with st.expander('Cell Image', expanded = True):
         st.image(image, use_column_width=True)
+@st.cache(allow_output_mutation=True)
+
+
 
 def load_models(model_name):
     model = tf.keras.models.load_model(model_name)
