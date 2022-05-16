@@ -15,6 +15,11 @@ Generate_pred=st.sidebar.button("Predict")
 
 @st.cache(allow_output_mutation=True)
 
+if upload_file:
+    image=Image.open(upload_file)
+    with st.expander('Cell Image', expanded = True):
+        st.image(image, use_column_width=True)
+
 def load_models(model_name):
     model = tf.keras.models.load_model(model_name)
     return model
@@ -30,9 +35,6 @@ def import_n_pred(image_data, model):
     return pred
 
 if Generate_pred:
-    image=Image.open(upload_file)
-    with st.expander('Cell Image', expanded = True):
-        st.image(image, use_column_width=True)
     pred=import_n_pred(image, model)
     labels = ['Parasitized', 'Uninfected']
     st.title("Prediction of image is {}".format(labels[np.argmax(pred)]))
